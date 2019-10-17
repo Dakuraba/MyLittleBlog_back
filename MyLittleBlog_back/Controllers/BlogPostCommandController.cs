@@ -15,8 +15,7 @@ namespace MyLittleBlog_back.Controllers
     [ApiController]
     public class BlogPostCommandController : ControllerBase
     {
-        [HttpPost]
-        [Route("v1/posts")]
+        [HttpPost("v1")]
         public ActionResult Post(Post item)
         {
             if (!ModelState.IsValid)
@@ -40,8 +39,7 @@ namespace MyLittleBlog_back.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("v1/posts")]
+        [HttpPut("v1")]
         public ActionResult Put(Post item)
         {
             if (!ModelState.IsValid)
