@@ -16,7 +16,7 @@ namespace MyLittleBlog_back.Domain.Command.Handler
             _command = command;
         }
         
-        public CommandResponse Execute()
+        public async Task<CommandResponse> Execute()
         {
             var response = new CommandResponse()
             {

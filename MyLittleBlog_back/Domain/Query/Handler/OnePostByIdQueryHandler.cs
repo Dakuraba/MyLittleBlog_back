@@ -16,7 +16,7 @@ namespace MyLittleBlog_back.Domain.Query.Handler
             _query = query;
         }
         
-        public Post Get()
+        public async Task<Post> Get()
         {
             return MockBlogDb.Posts.FirstOrDefault(p => p.ID == _query.ID);
         }

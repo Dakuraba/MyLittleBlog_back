@@ -13,8 +13,8 @@ namespace MyLittleBlog_back.Domain.Query.Handler
     /// </summary>
     /// <typeparam name="TQuery"></typeparam>
     /// <typeparam name="TResponse"></typeparam>
-    public interface IQueryHandler<in TQuery, out TResponse> where TQuery : IQuery<TResponse>
+    public interface IQueryHandler<in TQuery, TResponse> where TQuery : IQuery<TResponse>
     {
-        TResponse Get();
+        Task<TResponse> Get();
     }
 }

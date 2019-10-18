@@ -9,7 +9,7 @@ namespace MyLittleBlog_back.Domain.Query.Handler
 {
     public class AllPostQueryHandler : IQueryHandler<AllPostQuery, IEnumerable<Post>>
     {
-        public IEnumerable<Post> Get()
+        public async Task<IEnumerable<Post>> Get()
         {
             return MockBlogDb.Posts.OrderBy(p => p.ID);
         }

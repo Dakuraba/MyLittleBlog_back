@@ -16,7 +16,7 @@ namespace MyLittleBlog_back.Controllers
     public class BlogPostCommandController : ControllerBase
     {
         [HttpPost("v1")]
-        public ActionResult Post(Post item)
+        public async Task<IActionResult>  Post(Post item)
         {
             if (!ModelState.IsValid)
             {
@@ -25,7 +25,7 @@ namespace MyLittleBlog_back.Controllers
 
             var command = new SavePostCommand(item);
             var handler = PostCommandHandlerFactory.Build(command);
-            var response = handler.Execute();
+            var response = await handler.Execute();
 
 
             if (response.Success)
@@ -40,7 +40,7 @@ namespace MyLittleBlog_back.Controllers
         }
 
         [HttpPut("v1")]
-        public ActionResult Put(Post item)
+        public async Task<IActionResult> Put(Post item)
         {
             if (!ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace MyLittleBlog_back.Controllers
 
             var command = new PutPostCommand(item);
             var handler = PostCommandHandlerFactory.Build(command);
-            var response = handler.Execute();
+            var response = await handler.Execute();
 
 
             if (response.Success)
@@ -65,7 +65,7 @@ namespace MyLittleBlog_back.Controllers
 
         [HttpDelete]
         [Route("v1/posts/{id}")]
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (!ModelState.IsValid)
             {
@@ -74,7 +74,7 @@ namespace MyLittleBlog_back.Controllers
 
             var command = new DeletePostCommand(id);
             var handler = PostCommandHandlerFactory.Build(command);
-            var response = handler.Execute();
+            var response = await handler.Execute();
 
             if (response.Success)
             {

@@ -18,23 +18,24 @@ namespace MyLittleBlog_back.Controllers
     public class BlogPostController : ControllerBase
     {
         // GET api/values
-        [HttpGet]
-        [Route("v1/posts")]
-        public IEnumerable<Post> GetAll()
+        [HttpGet("v1")]
+        public async Task<IActionResult> GetAll()
         {
             var query = new AllPostQuery();
             var handler = PostQueryHandlerFactory.Build(query);
-            return handler.Get(); 
+            var postList = await handler.Get();
+            
+            return Ok(postList); 
         }
 
-        [HttpGet]
-        [Route("v1/posts/{id}")]
-        public Post GetPost(int id)
+        [HttpGet("v1/{id:int}")]
+        public async Task<IActionResult> GetPost(int id)
         {
             var query = new OnePostByIdQuery(id);
             var handler = PostQueryHandlerFactory.Build(query);
+            var post = await handler.Get();
 
-            return handler.Get();
+            return Ok(post);
         }
     }
 }
