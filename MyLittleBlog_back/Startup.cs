@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MyLittleBlog_back.Domain.Command;
+using MyLittleBlog_back.Domain.Query;
+using PostDBManager.Interface;
+using PostDBManager.Repository;
 
 namespace MyLittleBlog_back
 {
@@ -26,7 +31,13 @@ namespace MyLittleBlog_back
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //log service
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+            //MongDB Blogs post respository  service
+            services.AddSingleton(typeof(IPostsRepository), typeof(PostsRepository));
+            //Factories as services
+            services.AddSingleton(typeof(IPostQueryHandlerFactory), typeof(PostQueryHandlerFactory));
+            services.AddSingleton(typeof(IPostCommandHandlerFactory), typeof(PostCommandHandlerFactory));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +46,7 @@ namespace MyLittleBlog_back
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //app.UseJwtBearerAuthentication();
             }
             else
             {

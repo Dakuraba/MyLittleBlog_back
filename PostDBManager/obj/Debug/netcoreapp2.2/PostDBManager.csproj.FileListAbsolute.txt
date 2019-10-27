@@ -1,0 +1,15 @@
+F:\DEV\VS Project\MyLittleBlog_simpleBack\PostDBManager\bin\Debug\netcoreapp2.2\PostDBManager.deps.json
+F:\DEV\VS Project\MyLittleBlog_simpleBack\PostDBManager\bin\Debug\netcoreapp2.2\PostDBManager.dll
+F:\DEV\VS Project\MyLittleBlog_simpleBack\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.csproj.CoreCompileInputs.cache
+F:\DEV\VS Project\MyLittleBlog_simpleBack\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.AssemblyInfoInputs.cache
+F:\DEV\VS Project\MyLittleBlog_simpleBack\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.AssemblyInfo.cs
+F:\DEV\VS Project\MyLittleBlog_simpleBack\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.csprojAssemblyReference.cache
+F:\DEV\VS Project\MyLittleBlog_simpleBack\PostDBManager\bin\Debug\netcoreapp2.2\PostDBManager.pdb
+F:\DEV\VS Project\MyLittleBlog_simpleBack\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.dll
+F:\DEV\VS Project\MyLittleBlog_simpleBack\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.pdb
+F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.csprojAssemblyReference.cache
+F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.csproj.CoreCompileInputs.cache
+F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.AssemblyInfoInputs.cache
+F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.AssemblyInfo.cs
+F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.dll
+F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.pdb

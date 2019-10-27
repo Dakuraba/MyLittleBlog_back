@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLittleBlog_back", "MyLittleBlog_back\MyLittleBlog_back.csproj", "{260EE64E-ED07-4B61-A2E8-FB5C0C432A3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogPostApi_Test", "BlogPostApi_Test\BlogPostApi_Test.csproj", "{802AF839-AC07-4A66-B319-E32F20FA1673}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogPostApi_Test", "BlogPostApi_Test\BlogPostApi_Test.csproj", "{802AF839-AC07-4A66-B319-E32F20FA1673}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostDBManager", "PostDBManager\PostDBManager.csproj", "{334B4326-3A08-4CFB-ABDF-B3239E1C5583}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{802AF839-AC07-4A66-B319-E32F20FA1673}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{802AF839-AC07-4A66-B319-E32F20FA1673}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{802AF839-AC07-4A66-B319-E32F20FA1673}.Release|Any CPU.Build.0 = Release|Any CPU
+		{334B4326-3A08-4CFB-ABDF-B3239E1C5583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334B4326-3A08-4CFB-ABDF-B3239E1C5583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334B4326-3A08-4CFB-ABDF-B3239E1C5583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334B4326-3A08-4CFB-ABDF-B3239E1C5583}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

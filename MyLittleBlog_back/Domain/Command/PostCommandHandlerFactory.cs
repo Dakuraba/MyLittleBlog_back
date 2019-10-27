@@ -1,6 +1,8 @@
-﻿using MyLittleBlog_back.Domain.Command.Command;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MyLittleBlog_back.Domain.Command.Command;
 using MyLittleBlog_back.Domain.Command.Handler;
 using MyLittleBlog_back.Domain.Entity;
+using PostDBManager.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +10,28 @@ using System.Threading.Tasks;
 
 namespace MyLittleBlog_back.Domain.Command
 {
-    public static class PostCommandHandlerFactory
+    public class PostCommandHandlerFactory : IPostCommandHandlerFactory
     {
-        public static ICommandHandler<SavePostCommand, CommandResponse> Build(SavePostCommand command)
+        private readonly IServiceProvider _serviceProvider;
+
+        public PostCommandHandlerFactory(IServiceProvider serviceProvider)
         {
-            return new SavePostCommandHandler(command);
+            _serviceProvider = serviceProvider;
         }
 
-        public static ICommandHandler<DeletePostCommand, CommandResponse> Build(DeletePostCommand command)
+        public ICommandHandler<SavePostCommand, CommandResponse> Build(SavePostCommand command)
         {
-            return new DeletePostCommandHandler(command);
+            return new SavePostCommandHandler(_serviceProvider.GetService<IPostsRepository>(), command);
         }
 
-        public static ICommandHandler<PutPostCommand, CommandResponse> Build(PutPostCommand command)
+        public ICommandHandler<DeletePostCommand, CommandResponse> Build(DeletePostCommand command)
         {
-            return new PutPostCommandHandler(command);
+            return new DeletePostCommandHandler(_serviceProvider.GetService<IPostsRepository>(), command);
+        }
+
+        public  ICommandHandler<PutPostCommand, CommandResponse> Build(PutPostCommand command)
+        {
+            return new PutPostCommandHandler(_serviceProvider.GetService<IPostsRepository>(), command);
         }
     }
 }

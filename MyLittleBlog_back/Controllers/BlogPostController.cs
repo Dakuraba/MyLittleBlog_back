@@ -17,22 +17,39 @@ namespace MyLittleBlog_back.Controllers
     [ApiController]
     public class BlogPostController : ControllerBase
     {
-        // GET api/values
+
+        private readonly IPostQueryHandlerFactory _queryFactory;
+
+        public BlogPostController(IPostQueryHandlerFactory queryFactory)
+        {
+            _queryFactory = queryFactory;
+        }
+
+        /// <summary>
+        /// Get method. Retrive all post from database ordered by postdate.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("v1")]
         public async Task<IActionResult> GetAll()
         {
             var query = new AllPostQuery();
-            var handler = PostQueryHandlerFactory.Build(query);
+            var handler = _queryFactory.Build(query);
             var postList = await handler.Get();
             
             return Ok(postList); 
         }
 
+
+        /// <summary>
+        /// Get method. Retrieve post of id passed in parameter.
+        /// </summary>
+        /// <param name="id">id of the requested post</param>
+        /// <returns></returns>
         [HttpGet("v1/{id:int}")]
         public async Task<IActionResult> GetPost(int id)
         {
             var query = new OnePostByIdQuery(id);
-            var handler = PostQueryHandlerFactory.Build(query);
+            var handler = _queryFactory.Build(query);
             var post = await handler.Get();
 
             return Ok(post);

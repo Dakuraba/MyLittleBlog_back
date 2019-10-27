@@ -1,5 +1,7 @@
-﻿using MyLittleBlog_back.Domain.Command.Command;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyLittleBlog_back.Domain.Command.Command;
 using MyLittleBlog_back.Domain.Entity;
+using PostDBManager.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace MyLittleBlog_back.Domain.Command.Handler
 {
-    public class SavePostCommandHandler : ICommandHandler<SavePostCommand, CommandResponse>
+    public class SavePostCommandHandler : BasePostRepository, ICommandHandler<SavePostCommand, CommandResponse>
     {
         private readonly SavePostCommand _command;
+  
 
-        public SavePostCommandHandler(SavePostCommand command)
+        public SavePostCommandHandler(IPostsRepository repo, SavePostCommand command) : base (repo)
         {
             _command = command;
         }
@@ -25,25 +28,9 @@ namespace MyLittleBlog_back.Domain.Command.Handler
 
             try
             {
-                var item = MockBlogDb
-                    .Posts
-                    .FirstOrDefault(p => p.ID == _command.Post.ID);
+                var item = await _repo.InsertPostAsync(_command.Post);
 
-                if (item == null)
-                {
-                    item.ID = MockBlogDb.UniquePostId;
-                    MockBlogDb.UniquePostId++;
-                    MockBlogDb.Posts.Add(item);
-                }
-                else
-                {
-                    //Maj
-                    item.PostContent = _command.Post.PostContent;
-                    item.PostDate = _command.Post.PostDate;
-                    item.PostTitle = _command.Post.PostTitle;
-                }
-
-                response.ID = item.ID;
+                response.ID = item.PostId;
                 response.Success = true;
                 response.Message = "Saved post.";
             }

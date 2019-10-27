@@ -1,5 +1,7 @@
-﻿using MyLittleBlog_back.Domain.Command.Command;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyLittleBlog_back.Domain.Command.Command;
 using MyLittleBlog_back.Domain.Entity;
+using PostDBManager.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MyLittleBlog_back.Domain.Command.Handler
 {
-    public class PutPostCommandHandler : ICommandHandler<PutPostCommand, CommandResponse>
+    public class PutPostCommandHandler : BasePostRepository, ICommandHandler<PutPostCommand, CommandResponse>
     {
         private PutPostCommand _command;
 
-        public PutPostCommandHandler(PutPostCommand command)
+        public PutPostCommandHandler([FromServices] IPostsRepository repo, PutPostCommand command) : base(repo)
         {
             _command = command;
         }
@@ -25,9 +27,7 @@ namespace MyLittleBlog_back.Domain.Command.Handler
 
             try
             {
-                var item = MockBlogDb
-                    .Posts
-                    .FirstOrDefault(p => p.ID == _command.Post.ID);
+                var item = await _repo.UpdatePostAsync(_command.Post.PostId.ToString(), _command.Post);
 
                 if (item != null)
                 {
@@ -41,7 +41,7 @@ namespace MyLittleBlog_back.Domain.Command.Handler
                     //error
                 }
 
-                response.ID = item.ID;
+                response.ID = _command.Post.PostId;
                 response.Success = true;
                 response.Message = "Saved post.";
             }

@@ -1,6 +1,9 @@
-﻿using MyLittleBlog_back.Domain.Entity;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MyLittleBlog_back.Domain.Entity;
 using MyLittleBlog_back.Domain.Query.Handler;
 using MyLittleBlog_back.Domain.Query.Query;
+using PostDBManager.DTOs;
+using PostDBManager.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +11,24 @@ using System.Threading.Tasks;
 
 namespace MyLittleBlog_back.Domain.Query
 {
-    public static class PostQueryHandlerFactory
+    public class PostQueryHandlerFactory : IPostQueryHandlerFactory
     {
-        public static IQueryHandler<AllPostQuery, IEnumerable<Post>> Build(AllPostQuery query)
+        private readonly IServiceProvider _serviceProvider;
+
+        public PostQueryHandlerFactory(IServiceProvider serviceProvider)
         {
-            return new AllPostQueryHandler();
+            _serviceProvider = serviceProvider;
         }
 
-        public static IQueryHandler<OnePostByIdQuery, Post> Build(OnePostByIdQuery query)
+
+        public IQueryHandler<AllPostQuery, IEnumerable<PostDTO>> Build(AllPostQuery query)
         {
-            return new OnePostByIdQueryHandler(query);
+            return new AllPostQueryHandler(_serviceProvider.GetService<IPostsRepository>());
+        }
+
+        public IQueryHandler<OnePostByIdQuery, PostDTO> Build(OnePostByIdQuery query)
+        {
+            return new OnePostByIdQueryHandler(_serviceProvider.GetService<IPostsRepository>(), query);
         }            
     }
 }
