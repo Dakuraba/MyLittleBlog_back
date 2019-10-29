@@ -13,3 +13,6 @@ F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\obj\Debug\netcoreapp2.2\PostDB
 F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.AssemblyInfo.cs
 F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.dll
 F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\obj\Debug\netcoreapp2.2\PostDBManager.pdb
+F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\bin\Debug\netcoreapp2.2\PostDBManager.deps.json
+F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\bin\Debug\netcoreapp2.2\PostDBManager.dll
+F:\DEV\VS Project\MyLittleBlog_back\PostDBManager\bin\Debug\netcoreapp2.2\PostDBManager.pdb

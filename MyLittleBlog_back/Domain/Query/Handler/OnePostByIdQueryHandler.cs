@@ -23,7 +23,7 @@ namespace MyLittleBlog_back.Domain.Query.Handler
         
         public async Task<PostDTO> Get()
         {
-            return await _repo.GetAsync(_query.ID.ToString());
+            return await _repo.GetAsync(_query.ID);
         }
     }
 }

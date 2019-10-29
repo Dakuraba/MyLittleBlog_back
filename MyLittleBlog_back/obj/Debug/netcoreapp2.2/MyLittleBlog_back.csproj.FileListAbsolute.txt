@@ -12,3 +12,6 @@ F:\DEV\VS Project\MyLittleBlog_back\MyLittleBlog_back\obj\Debug\netcoreapp2.2\My
 F:\DEV\VS Project\MyLittleBlog_back\MyLittleBlog_back\bin\Debug\netcoreapp2.2\MyLittleBlog_back.pdb
 F:\DEV\VS Project\MyLittleBlog_back\MyLittleBlog_back\obj\Debug\netcoreapp2.2\MyLittleBlog_back.dll
 F:\DEV\VS Project\MyLittleBlog_back\MyLittleBlog_back\obj\Debug\netcoreapp2.2\MyLittleBlog_back.pdb
+F:\DEV\VS Project\MyLittleBlog_back\MyLittleBlog_back\bin\Debug\netcoreapp2.2\PostDBManager.dll
+F:\DEV\VS Project\MyLittleBlog_back\MyLittleBlog_back\bin\Debug\netcoreapp2.2\PostDBManager.pdb
+F:\DEV\VS Project\MyLittleBlog_back\MyLittleBlog_back\obj\Debug\netcoreapp2.2\MyLittleBlog_back.csproj.CopyComplete

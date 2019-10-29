@@ -9,9 +9,9 @@ namespace MyLittleBlog_back.Domain.Query.Query
 {
     public class OnePostByIdQuery : IQuery<PostDTO>
     {
-        public int ID { get; private set; }
+        public string ID { get; private set; }
 
-        public OnePostByIdQuery (int id)
+        public OnePostByIdQuery (string id)
         {
             ID = id;
         }

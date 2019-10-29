@@ -45,8 +45,8 @@ namespace MyLittleBlog_back.Controllers
         /// </summary>
         /// <param name="id">id of the requested post</param>
         /// <returns></returns>
-        [HttpGet("v1/{id:int}")]
-        public async Task<IActionResult> GetPost(int id)
+        [HttpGet("v1/{id}")]
+        public async Task<IActionResult> GetPost(string id)
         {
             var query = new OnePostByIdQuery(id);
             var handler = _queryFactory.Build(query);

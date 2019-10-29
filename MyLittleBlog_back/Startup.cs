@@ -31,6 +31,16 @@ namespace MyLittleBlog_back
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyAllowSpecificOrigins",
+                builder =>
+                {
+                    builder.WithOrigins("https://localhost:44367/api/")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                });
+            });
             //log service
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
             //MongDB Blogs post respository  service
@@ -53,6 +63,7 @@ namespace MyLittleBlog_back
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseCors("MyAllowSpecificOrigins");
 
             app.UseHttpsRedirection();
             app.UseMvc();
